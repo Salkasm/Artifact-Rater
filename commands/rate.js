@@ -12,6 +12,7 @@ module.exports = {
         var rounding = 0
         var found = false
         var maxpossible = ''
+        var absolute = false
 
         //Library of substats
         var substat = {
@@ -52,6 +53,7 @@ module.exports = {
             //Check if displayed stat has period or not, adjust range
             if (args[0] == "HP" || args[0] == "ATK" || args[0] == "DEF" || args[0] == "EM") {
                 range = [range[0], range[1]]
+                absolute = true
                 rounding = 0
             } else {
                 range = [range[2], range[3]]
@@ -97,7 +99,7 @@ module.exports = {
 
                 if (uniqueoutcome[i].includes(args[1])) { //Ideally youd only have 1 value left. Check if the value corresponds to the displayed value read by the OCR.
                     maxpossible = parseFloat((substat[entry][3] * roll[i]).toFixed(rounding));
-                    message.channel.send("The substat **" + args[0] + "** has **" + roll[i] + "** rolls in total! Max possible stat is **" + maxpossible + "** (" + Math.round(((args[1] - roll[i] * substat[entry][0].toFixed(rounding)) / (maxpossible - roll[i] * substat[entry][0].toFixed(rounding))) * 100) + "%).\n")
+                    message.channel.send("The substat **" + args[0] + " ("+ args[1]+ (!absolute && "%" || "") +")** has **" + roll[i] + "** rolls in total! Max possible stat is **" + maxpossible + "** (" + Math.round(((args[1] - roll[i] * substat[entry][0].toFixed(rounding)) / (maxpossible - roll[i] * substat[entry][0].toFixed(rounding))) * 100) + "%).\n")
                     found = true //Mark it. In case it would not have been found, it would mark it as unconstructable.
                     return;
                 }
