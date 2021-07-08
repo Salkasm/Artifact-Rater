@@ -111,9 +111,10 @@ module.exports = {
           });
           if (uniqueoutcome[i].includes(args[1])) { //Ideally youd only have 1 value left. Check if the value corresponds to the displayed value read by the OCR.
             maxpossible = parseFloat((substat[entry][3] * roll[i]).toFixed(rounding));
-            mastermessage += "The substat **" + args[0] + " ("+ args[1]+ (!absolute && "%" || "") +")** has **" + roll[i] + "** rolls in total! Max possible stat is **" + maxpossible + "** (" + Math.round(((args[1] - roll[i] * substat[entry][0].toFixed(rounding)) / (maxpossible - roll[i] * substat[entry][0].toFixed(rounding))) * 100) + "%).\n"
+            mastermessage += "The substat **" + args[0] + " ("+ args[1] +")** has **" + roll[i] + "** rolls in total! Max possible stat is **" + maxpossible + "** (" + Math.round(((args[1] - roll[i] * substat[entry][0].toFixed(rounding)) / (maxpossible - roll[i] * substat[entry][0].toFixed(rounding))) * 100) + "%).\n"
             found = true //Mark it. In case it would not have been found, it would mark it as unconstructable.
             absolute = false //Reset value for next iteration
+            //+ (!absolute && "%" || "")
             return;
           }
         }
