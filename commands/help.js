@@ -3,27 +3,30 @@ module.exports = {
 	description: `Help command to explain all existing commands.`,
 	args: false,
 	execute(message, args) {
+		const {
+			prefix,
+		} = require('../config.json');
 
 		function botresponse(specifier) {
 			switch (specifier) {
 				case `help`:
 					message.channel.send('--------------------------------------')
-					message.channel.send('```\n<Documentation>\n\nCommand: ;help\n\nArguments: None\n\nExample: ;help\n\nExplanation: Haha very funny...```')
+					message.channel.send('```\n<Documentation>\n\nCommand: '+ prefix +'help\n\nArguments: None\n\nExample: '+ prefix +'help\n\nExplanation: Haha very funny...```')
 					break;
 
 				case `ping`:
 					message.channel.send('--------------------------------------')
-					message.channel.send('```\n<Documentation>\n\nCommand: ;ping\n\nArguments: None\n\nExample: ;ping\n\nExplanation: Check bot responsiveness.```')
+					message.channel.send('```\n<Documentation>\n\nCommand: '+ prefix +'ping\n\nArguments: None\n\nExample: '+ prefix +'ping\n\nExplanation: Check bot responsiveness.```')
 					break;
 
 				case `version`:
 					message.channel.send('--------------------------------------')
-					message.channel.send('```\n<Documentation>\n\nCommand: ;version\n\nArguments: None\n\nExample: ;version\n\nExplanation: Summary of bot version and credits.```')
+					message.channel.send('```\n<Documentation>\n\nCommand: '+ prefix +'version\n\nArguments: None\n\nExample: '+ prefix +'version\n\nExplanation: Summary of bot version and credits.```')
 					break;
 
 				case `ocr`:
 					message.channel.send('--------------------------------------')
-					message.channel.send('```\n<Documentation>\n\nCommand: ;ocr\n\nArguments: Uploaded image of substats\n\nExample: ;ocr\n\nExplanation: When uploading a image with substats, type ";ocr" as a comment. An external program will analyse the image and the bot will calculate the rating.```')
+					message.channel.send('```\n<Documentation>\n\nCommand: '+ prefix +'ocr\n\nArguments: Uploaded image of substats\n\nExample: '+ prefix +'ocr\n\nExplanation: When uploading a image with substats, type "'+ prefix +'ocr" as a comment. An external program will analyse the image and the bot will calculate the rating.```')
 					break;
 
 				case `rate`:

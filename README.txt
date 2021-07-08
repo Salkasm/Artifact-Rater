@@ -5,4 +5,4 @@ I have provided a generic config.json file (make sure to rename it to that) wher
 The OCR API key is free and requires a sign-up. It will only ask for your e-mail to send the key (https://ocr.space/OCRAPI).
 The Discord token requires you to generate one in your dev settings (https://discord.com/developers/applications).
 
-Bots current version is 1.0.
+Bots current version is 1.0. I am an autodidact programmer, don't expect optimised code from me.
