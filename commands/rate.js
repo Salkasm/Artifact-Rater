@@ -106,7 +106,7 @@ module.exports = {
             }
 
             if (found == false) {
-                message.channel.send("The substat **" + args[0] + "** with the value **" + args[1] + "** is impossible to construct!")
+                message.channel.send("The substat **" + args[0] + "** with the value **" + args[1] + (!absolute && "%" || "") + "** is impossible to construct!")
             }
 
         } else {
