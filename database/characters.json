@@ -5,28 +5,28 @@
     },
     "Xiangling" : {
         "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Pale Flame"]],
-        "Sub-DPS": [[["ER%", "ATK%", "EM"],["Pyro DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "ER%"],["Crimson Witch of"]]
+        "Sub-DPS": [[["ER%", "ATK%", "EM"],["Pyro DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "ER%"],["Crimson Witch of", "Crimson Witch of Flames"]]
     },
     "Bennett" : {
-        "Pyro DPS": [[["ATK%", "ER%"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of"]],
+        "Pyro DPS": [[["ATK%", "ER%"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of", "Crimson Witch of Flames"]],
         "Sub-DPS": [[["ER%", "ATK%"],["Pyro DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "EM"],["Noblesse Oblige"]],
         "Support": [[["HP%"],["HP%"],["HB"]],["ER%", "HP%", "HP"],["Noblesse Oblige"]]
     },
     "Xinyan" : {
         "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Pale Flame", "Bloodstained Chivalry"]],
-        "Support": [[["DEF%", "ER%"],["DEF%"],["DEF%"]],["DEF%", "ER%"],["Tenacity of the"]]
+        "Support": [[["DEF%", "ER%"],["DEF%"],["DEF%"]],["DEF%", "ER%"],["Tenacity of the", "Tenacity of the Millelith"]]
     },
     "Yanfei" : {
-        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Crimson Witch of"]]
+        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Crimson Witch of", "Crimson Witch of Flames"]]
     },
     "Diluc" : {
-        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of"]]
+        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of", "Crimson Witch of Flames"]]
     },
     "Klee" : {
-        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of", "Gladiator's Finale"]]
+        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of", "Crimson Witch of Flames", "Gladiator's Finale"]]
     },
     "Hu Tao" : {
-        "Pyro DPS": [[["HP%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "HP%", "EM"],["Crimson Witch of"]]
+        "Pyro DPS": [[["HP%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "HP%", "EM"],["Crimson Witch of", "Crimson Witch of Flames"]]
     },
     "Fischl" : {
         "Physical DPS": [[["ATK%"],["Physical DMG%", "Electro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Pale Flame"]],
@@ -80,7 +80,7 @@
         "Sub-DPS": [[["ATK%", "ER%"],["Cryo DMG%"],["CDMG%", "CR%"]],["CR%", "EM", "ER%", "CDMG%"],["Noblesse Oblige"]]
     },
     "Qiqi" : {
-        "Support": [[["ATK%", "ER%"],["ATK%", "Cryo DMG%"],["ATK%", "HB"]],["ATK%", "ER%", "ATK"],["Tenacity of the", "Maiden Beloved"]]
+        "Support": [[["ATK%", "ER%"],["ATK%", "Cryo DMG%"],["ATK%", "HB"]],["ATK%", "ER%", "ATK"],["Tenacity of the", "Tenacity of the Millelith", "Maiden Beloved"]]
     },
     "Ganyu" : {
         "Cryo DPS": [[["ATK%"],["Cryo DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Blizzard Strayer", "Wanderer's Troupe", "Gladiator's Finale"]],
@@ -117,8 +117,8 @@
     },
     "Zhongli" : {
         "Physical DPS": [[["ATK%", "HP%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "HP%"],["Pale Flame"]],
-        "Sub-DPS": [[["ATK%", "HP%"],["Geo DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "HP%", "ATK%"],["Tenacity of the"]],
-        "Support": [[["HP%"],["HP%"],["HP%"]],["HP%", "ER%", "HP"],["Tenacity of the"]]
+        "Sub-DPS": [[["ATK%", "HP%"],["Geo DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "HP%", "ATK%"],["Tenacity of the", "Tenacity of the Millelith"]],
+        "Support": [[["HP%"],["HP%"],["HP%"]],["HP%", "ER%", "HP"],["Tenacity of the", "Tenacity of the Millelith"]]
     },
     "Albedo" : {
         "Sub-DPS": [[["DEF%"],["Geo DMG%", "DEF%"],["CR%", "CDMG%", "DEF%"]],["CR%", "CDMG%", "DEF%", "ER%"],["Archaic Petra", "Noblesse Oblige"]]

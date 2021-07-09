@@ -13,3 +13,9 @@ Added:
 - Character builds
 - Improved rating in relation to builds
 - Suggests character builds to analysed artifacts
+- rate command works also for 4 star artifacts now
+- OCR works on both artifact backgrounds (one in character selection and one when obtaining/in bag)
+
+Changes:
+- Previous rate command is now called check
+- Previous ocr command is now called rate
