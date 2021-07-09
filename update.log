@@ -1,0 +1,15 @@
+1.0
+Initial public release of the bot. Features:
+- A command (rate) to rate individual substats by text. 
+- A command (ocr) to read substats out of an image and rate them.
+
+1.1
+Added:
+- Localised database
+- Fixed small bugs
+
+1.2
+Added:
+- Character builds
+- Improved rating in relation to builds
+- Suggests character builds to analysed artifacts

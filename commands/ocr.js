@@ -1,5 +1,3 @@
-const rate = require('./rate');
-
 module.exports = {
   name: 'ocr',
   description: `Optical Character Recognition Command`,
@@ -11,10 +9,27 @@ module.exports = {
     const {
       apikey
     } = require('../config.json');
-    var statname = ["HP+", "ATK+", "DEF+", "CRIT Rate+", "CRIT DMG+", "Energy Recharge+", "Elemental Mastery+"]
+    var statname = ["HP+", "ATK+", "DEF+", "te+", "DMG+", "ge+", "ry+"]
+    var elementname = ["Anemo", "Cryo", "Geo", "Pyro", "Hydro", "Electro", "Dendro"]
+    var mainname = ["HP", "ATK", "DEF", "Rate", "DMG", "arge", "tery", "nus"]
     var selection = []
     var maxpossible = ''
-    var mastermessage = ''
+    var mastermessage = '5 star artifact detected:\n'
+    var matchmessage = "Artifact works:\n"
+    var set = ''
+    var setpiece = args[0]
+    var indisc = args[1]
+    var mainskip = false
+    var element = ''
+    var mainstat = ''
+    var mainvalue = ''
+    var substatlist = []
+    var options = {}
+    var strength = 0
+    var counter = 0
+    var counterstore = []
+    var rating = 0
+    var swapto4 = [0,0]
 
     //Calcualtion parameter
     var sum = 0
@@ -24,18 +39,38 @@ module.exports = {
     var rounding = 0
     var found = false
 
-    //Library of substats. % was moved to the stat name rather than the number.
-    var substat = {
-      "HP": [209.13, 239.00, 268.88, 298.75],
-      "ATK": [13.62, 15.56, 17.51, 19.45],
-      "DEF": [16.20, 18.52, 20.83, 23.15],
-      "HP%": [4.08, 4.66, 5.25, 5.83],
-      "ATK%": [4.08, 4.66, 5.25, 5.83],
-      "DEF%": [5.10, 5.83, 6.56, 7.29],
-      "EM": [16.32, 18.65, 20.98, 23.31],
-      "ER%": [4.53, 5.18, 5.83, 6.48],
-      "CR%": [2.72, 3.11, 3.50, 3.89],
-      "CDMG%": [5.44, 6.22, 6.99, 7.77]
+    //Library of substats and sets. % was moved to the stat name rather than the number.
+    var {
+      substat,
+      substat4,
+    } = require('../database/substats.json');
+    const {
+      setstat,
+    } = require('../database/setstats.json');
+    const characters = require('../database/characters.json');
+
+    //Preemptive check
+    switch (setpiece) {
+      case "flower":
+        setpiece = -2
+        break;
+      case "plume":
+        setpiece = -1
+        break;
+      case "sands":
+        setpiece = 0
+        break;
+      case "goblet":
+        setpiece = 1
+        break;
+      case "circlet":
+        setpiece = 2
+        break;
+    }
+
+    if (!(Number.isInteger(setpiece) && setpiece < 3 && setpiece > -3) && setpiece != undefined) {
+      message.channel.send("For the extended OCR, please provide what type of piece it is in lowcaps (f.e. flower).")
+      return;
     }
 
     //Functions
@@ -58,6 +93,7 @@ module.exports = {
 
     //Function: Reconstruction of the analysed value. Will call the combination() function.
     function analysis(args) {
+      swapto4[1]++
       //Determine rolls
       var entry = Object.keys(substat).find(p => p == args[0]); //args[0] is the name of the substat (in focus) and args[1] is its numerical value
       if (entry != undefined) {
@@ -108,15 +144,22 @@ module.exports = {
               uniqueoutcome[i].push(c);
             }
           });
+          substatlist.push(args[0]) //Sum up the substats so they can be tested for the usefulness determintation
+
           if (uniqueoutcome[i].includes(args[1])) { //Ideally youd only have 1 value left. Check if the value corresponds to the displayed value read by the OCR.
             maxpossible = parseFloat((substat[entry][3] * roll[i]).toFixed(rounding));
-            mastermessage += "The substat **" + args[0] + " ("+ args[1] + (args[0].includes("%") && "%" || "") +")** has **" + roll[i] + "** rolls in total! Max possible stat is **" + maxpossible + (args[0].includes("%") && "%" || "") + "** (" + Math.round(((args[1] - roll[i] * substat[entry][0].toFixed(rounding)) / (maxpossible - roll[i] * substat[entry][0].toFixed(rounding))) * 100) + "%).\n"
+            counterstore[counter] = [args[0], roll[i]]
+            counter++
+            mastermessage += "The substat **" + args[0] + " (" + args[1] + (args[0].includes("%") && "%" || "") + ")** has **" + roll[i] + "** rolls in total! Max possible stat is **" + maxpossible + (args[0].includes("%") && "%" || "") + "** (" + Math.round(((args[1] - roll[i] * substat[entry][0].toFixed(rounding)) / (maxpossible - roll[i] * substat[entry][0].toFixed(rounding))) * 100) + "%).\n"
             found = true //Mark it. In case it would not have been found, it would mark it as unconstructable.
             return;
           }
         }
 
         if (found == false) {
+          counterstore[counter] = [args[0], 1]
+          counter++
+          swapto4[0]++
           mastermessage += "The substat **" + args[0] + "** with the value **" + args[1] + (args[0].includes("%") && "%" || "") + "** is impossible to construct or OCR failed to recognise the characters!\n"
         }
         found = false //Reset value for next iteration
@@ -131,6 +174,9 @@ module.exports = {
       message.attachments.forEach(attachment => {
         const url = attachment.url;
         async function main() {
+          message.channel.send("OCR request sent!").then(msg => {
+            setTimeout(() => msg.delete(), 5000)
+          })
           try {
             // Apply OCR by external API
             const res1 = await ocrSpace(url, {
@@ -142,16 +188,68 @@ module.exports = {
           } catch (error) {
             console.log(error)
           }
+          message.channel.send("OCR request fulfilled!").then(msg => {
+            setTimeout(() => msg.delete(), 5000)
+          })
 
           analysedtext = analysedtext.split("\n") //Split the lines of the raw OCR output into array elements
 
           for (each in analysedtext) {
             analysedtext[each] = analysedtext[each].replace(/\t/g, '') //prune useless information
             analysedtext[each] = analysedtext[each].replace(/\r/g, '') //prune useless information
-
+            analysedtext[each] = analysedtext[each].replace(/\n/g, '') //prune useless information
+            if (args[0]) {
+              //Determine element if necessary (goblet)
+              for (every in elementname) {
+                if (analysedtext[each].includes(elementname[every]) && mainskip == false) {
+                  element = elementname[every]
+                  analysedtext[each] = elementname[every]
+                  mainskip = true
+                }
+              }
+              //Determine main stat and value
+              for (every in mainname) {
+                if (analysedtext[each].includes(mainname[every]) && !analysedtext[each].includes("+")) {
+                  mainstat = mainname[every]
+                  switch (mainstat) { //Use as little information as necessary to prevent OCR mistakes from breaking the analysis
+                    case "Rate":
+                      mainstat = "CR"
+                      break;
+                    case "DMG":
+                      mainstat = "CDMG"
+                      break;
+                    case "arge":
+                      mainstat = "ER"
+                      break;
+                    case "tery":
+                      mainstat = "EM"
+                      break;
+                    case "nus":
+                      mainstat = element + " DMG"
+                      break;
+                  }
+                  analysedtext[each] = analysedtext[each].replace(mainname[every], '')
+                  mainvalue = analysedtext[each]
+                  if (mainvalue.includes("%")) { //Determine if the mainstat is relative or absolute
+                    mainstat += "%"
+                  }
+                } else if (setpiece == -1 && mainstat == '') {
+                  mainstat = "ATK"
+                } else if (setpiece == -2 && mainstat == '') {
+                  mainstat = "HP"
+                }
+              }
+              //Determine the set
+              for (every in setstat) {
+                if (analysedtext[each].includes(setstat[every])) {
+                  analysedtext[each] = analysedtext[each].split(':')[0]
+                  set = analysedtext[each]
+                }
+              }
+            }
+            //Determine all substats
             for (every in statname) {
               if (analysedtext[each].includes(statname[every])) {
-
                 switch (statname[every]) { //Detect the type of substat. "+" is a really good indicator as to where the substat is.
                   case "HP+":
                     analysedtext[each] = analysedtext[each].substring(analysedtext[each].lastIndexOf("+") + 1) //Move to the final instance of "+" and remove everything (including self) to the left of the string
@@ -183,25 +281,25 @@ module.exports = {
                     }
                     break;
 
-                  case "CRIT Rate+":
+                  case "te+":
                     analysedtext[each] = analysedtext[each].substring(analysedtext[each].lastIndexOf("+") + 1)
                     analysedtext[each] = analysedtext[each].replace(/%/g, '')
                     selection.push(["CR%", analysedtext[each]])
                     break;
 
-                  case "CRIT DMG+":
+                  case "DMG+":
                     analysedtext[each] = analysedtext[each].substring(analysedtext[each].lastIndexOf("+") + 1)
                     analysedtext[each] = analysedtext[each].replace(/%/g, '')
                     selection.push(["CDMG%", analysedtext[each]])
                     break;
 
-                  case "Energy Recharge+":
+                  case "ge+":
                     analysedtext[each] = analysedtext[each].substring(analysedtext[each].lastIndexOf("+") + 1)
                     analysedtext[each] = analysedtext[each].replace(/%/g, '')
                     selection.push(["ER%", analysedtext[each]])
                     break;
 
-                  case "Elemental Mastery+":
+                  case "ry+":
                     analysedtext[each] = analysedtext[each].substring(analysedtext[each].lastIndexOf("+") + 1)
                     selection.push(["EM", analysedtext[each]])
                     break;
@@ -209,6 +307,49 @@ module.exports = {
               }
             }
           }
+          //Checking if main stat is possible
+          switch(setpiece){
+            case -2:
+              if(mainstat != "HP"){
+                message.channel.send("Main stat was misread, missing or impossible!")
+                return;
+              }
+              break;
+              case -1:
+              if(mainstat != "ATK"){
+                message.channel.send("Main stat was misread, missing or impossible!")
+                return;
+              }
+              break;
+              case 0:
+              if(mainstat != "ATK%" && mainstat != "DEF%" && mainstat != "HP%" && mainstat != "ER%" && mainstat != "EM"){
+                message.channel.send("Main stat was misread, missing or impossible!")
+                return;
+              }
+              break;
+              case 1:
+                console.log(mainstat)
+              if(mainstat != "ATK%" && mainstat != "DEF%" && mainstat != "HP%" && mainstat != "Cryo DMG%" && mainstat != "EM" && mainstat != "Anemo DMG%" && mainstat != "Dendro DMG%" && mainstat != "Electro DMG%" && mainstat != "Hydro DMG%" && mainstat != "Pyro DMG%" && mainstat != "Geo DMG%"){
+                message.channel.send("Main stat was misread, missing or impossible!")
+                return;
+              }
+              break;
+              case 2:
+              if(mainstat != "ATK%" && mainstat != "DEF%" && mainstat != "HP%" && mainstat != "CR%" && mainstat != "EM" && mainstat != "CDMG%"){
+                message.channel.send("Main stat was misread, missing or impossible!")
+                return;
+              }
+              break;
+          }
+          if (set == '' && indisc != "all") {
+            message.channel.send("Could not detect the set type! Make sure the set type is included in the image!")
+            return;
+          }
+          if (mainstat == '') {
+            message.channel.send("Could not detect the main stat! Make sure the main stat is included in the image!")
+            return;
+          }
+          if(swapto4[0] == 0 && swapto4[1] == 0){
           for (let idx = 0; idx < selection.length; idx++) { //Reset all parameters for next iteration
             sum = 0
             roll = [0, 0]
@@ -216,10 +357,107 @@ module.exports = {
             outcome = []
             rounding = 0
             found = false
-            analysis(selection[idx])
+            analysis(selection[idx], set)
+          }
+        }
+          if(swapto4[0]/swapto4[1] >= 0.5){
+            for (let idx = 0; idx < selection.length; idx++) { //Reset all parameters for next iteration
+              sum = 0
+              roll = [0, 0]
+              range = [0.50, 0.49, 0.050, 0.049]
+              outcome = []
+              rounding = 0
+              found = false
+              substat = substat4
+              counterstore = []
+              counter = 0
+              mastermessage = '4 star artifact detected:\n'
+              analysis(selection[idx], set)
+            }
+            swapto4 = [0,100]
+          }
+
+          if (args[0]) {
+            //Determine who this could belong to. This is a very big iteration.
+            for (each in characters) {
+              for (every in characters[each]) {
+                if (indisc != "all") {
+                  if (characters[each][every][2].includes(set)) {
+                    if (!options.hasOwnProperty(each)) {
+                      options[each] = {
+                        [every]: characters[each][every]
+                      }
+                    } else {
+                      Object.assign(options[each], {
+                        [every]: characters[each][every]
+                      })
+                    }
+                  }
+                } else {
+                  options = characters
+                }
+              }
+            }
+            //Test object "options" created against the substats to see if it is viable. Separate loops for better visuals. This part is horrendous.
+            for (each in options) {
+              for (every in options[each]) {
+                if (options[each][every][1].includes(mainstat)) { //If the main stat exists as a substat, then splice that option
+                  let index = options[each][every][1].indexOf(mainstat);
+                  if (index > -1) {
+                    options[each][every][1].splice(index, 1);
+                  }
+                } else if (options[each][every][1][3]) { //If the main stat does not exist as a substat, splice the fourth option if it exists
+                  options[each][every][1].splice(3, 1)
+                }
+              }
+            }
+            if (setpiece == 0 || setpiece == 1 || setpiece == 2) {
+              for (each in options) {
+                for (every in options[each]) {
+                  let intersection1 = options[each][every][0][setpiece].filter(x => mainstat.includes(x)) //Check for primary stat
+                  if (intersection1.length == 0) {
+                    delete options[each][every]
+                    if (Object.entries(options[each]) == 0) {
+                      delete options[each]
+                    }
+                  }
+                }
+              }
+            }
+            for (each in options) {
+              for (every in options[each]) {
+                let intersection2 = options[each][every][1].filter(x => substatlist.includes(x)) //Check for shared substats
+                let difference = options[each][every][1].filter(x => !substatlist.includes(x)) //Check for missing substats
+                strength = intersection2.length
+                options[each][every].strength = strength
+                if (options[each][every].strength == 0) {
+                  delete options[each][every]
+                  if (Object.entries(options[each]) == 0) {
+                    delete options[each]
+                  }
+                } else {
+                  for (one in counterstore) {
+                    for (two in intersection2) {
+                      if (counterstore[one][0] == intersection2[two]) {
+                        rating += counterstore[one][1]
+                      }
+                    }
+                  }
+                  matchmessage += "(" + rating + "/" + (intersection2.length + difference.length + 5) + ") " + (options[each][every].strength == 1 && "**Well**" || options[each][every].strength > 1 && "**Very well**") + " with **" + each + "** (" + every + ") with the substats: **" + intersection2 + "**" + (difference && ("," + difference) || '') + ".\n"
+                  rating = 0
+                }
+              }
+            }
           }
 
           message.channel.send(mastermessage || "Unidentified image!") //If OCR fails at a detection level, it will send an error rather than an analysis
+          if (setpiece != undefined) {
+            if (matchmessage != "Artifact works:\n") {
+              message.channel.send(matchmessage, { split: true })
+            } else {
+              message.channel.send("Artifact is not used on any character for any build.")
+            }
+          }
 
         }
         main()

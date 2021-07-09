@@ -15,7 +15,7 @@ module.exports = {
 			.setThumbnail('https://static.wikia.nocookie.net/gensin-impact/images/2/27/Item_Initiate%27s_Flower.png/revision/latest/scale-to-width-down/256?cb=20210514215057')
 			.addFields({
 				name: `With much love <3`,
-				value: `Version 1.0 'Flower'`
+				value: `Version 1.2 'Flower'`
 			}, {
 				name: '\u200B',
 				value: '\u200B'
@@ -29,7 +29,7 @@ module.exports = {
 				inline: true
 			}, )
 			.setTimestamp()
-			.setFooter(`Last updated: 07th of July '21`);
+			.setFooter(`Last updated: 09th of July '21`);
 
 		message.channel.send(exampleEmbed);
 	},

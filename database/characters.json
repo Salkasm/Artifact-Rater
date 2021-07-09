@@ -1,0 +1,126 @@
+{
+    "Amber" : {
+        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%"]],["CDMG%", "ATK%", "EM", "ER%"],["Wanderer's Troupe"]],
+        "Sub-DPS": [[["ER%", "ATK%", "EM"],["Pyro DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "EM"],["Wanderer's Troupe", "Noblesse Oblige"]]
+    },
+    "Xiangling" : {
+        "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Pale Flame"]],
+        "Sub-DPS": [[["ER%", "ATK%", "EM"],["Pyro DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "ER%"],["Crimson Witch of"]]
+    },
+    "Bennett" : {
+        "Pyro DPS": [[["ATK%", "ER%"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of"]],
+        "Sub-DPS": [[["ER%", "ATK%"],["Pyro DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "EM"],["Noblesse Oblige"]],
+        "Support": [[["HP%"],["HP%"],["HB"]],["ER%", "HP%", "HP"],["Noblesse Oblige"]]
+    },
+    "Xinyan" : {
+        "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Pale Flame", "Bloodstained Chivalry"]],
+        "Support": [[["DEF%", "ER%"],["DEF%"],["DEF%"]],["DEF%", "ER%"],["Tenacity of the"]]
+    },
+    "Yanfei" : {
+        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Crimson Witch of"]]
+    },
+    "Diluc" : {
+        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of"]]
+    },
+    "Klee" : {
+        "Pyro DPS": [[["ATK%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Crimson Witch of", "Gladiator's Finale"]]
+    },
+    "Hu Tao" : {
+        "Pyro DPS": [[["HP%", "EM"],["Pyro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "HP%", "EM"],["Crimson Witch of"]]
+    },
+    "Fischl" : {
+        "Physical DPS": [[["ATK%"],["Physical DMG%", "Electro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Pale Flame"]],
+        "Support": [[["ATK%"],["Electro DMG%"],["CR%", "CDMG%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Gladiator's Finale", "Thundering Fury"]]
+    },
+    "Beidou" : {
+        "Electro DPS": [[["ATK%"],["Electro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Thundering Fury", "Noblesse Oblige", "Gladiator's Finale"]],
+        "Sub-DPS": [[["ATK%", "ER%"],["Electro DMG%"],["CR%", "CDMG%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Thundering Fury", "Noblesse Oblige", "Gladiator's Finale"]]
+    },
+    "Lisa" : {
+        "Electro DPS": [[["ATK%", "ER%", "EM"],["Electro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Thundering Fury"]],
+        "EM DPS": [[["EM"],["EM"],["EM"]],["EM", "ER%", "ATK%"],["Thundering Fury"]],
+        "Sub-DPS": [[["ATK%", "ER%"],["Electro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Thundering Fury", "Gladiator's Finale"]]
+    },
+    "Razor" : {
+        "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "HP%", "ER%"],["Pale Flame"]]
+    },
+    "Keqing" : {
+        "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%"],["Pale Flame"]],
+        "Electro DPS": [[["ATK%"],["Electro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Thundering Fury", "Gladiator's Finale"]]
+    },
+    "Xingqiu" : {
+        "Sub-DPS": [[["ER%", "ATK%"],["Hydro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Heart of Depth", "Noblesse Oblige"]]
+    },
+    "Barbara" : {
+        "Hydro DPS": [[["ATK%"],["Hydro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Heart of Depth"]],
+        "Support": [[["ER%", "HP%"],["HP%"],["HB"]],["HP%", "ER%", "HP"],["Maiden Beloved"]]
+    },
+    "Tartaglia" : {
+        "Hydro DPS": [[["ATK%"],["Hydro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Heart of Depth"]],
+        "Sub-DPS": [[["ATK%", "EM"],["HYdro DMG%"],["CR%", "CDMG%"]],["CDMG%", "CR%", "ATK%", "EM"],["Noblesse Oblige", "Heart of Depth"]]
+    },
+    "Mona" : {
+        "Hydro DPS": [[["ATK%"],["Hydro DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Heart of Depth"]],
+        "Sub-DPS": [[["ATK%", "EM", "ER%"],["Hydro DMG%"],["CR%", "CDMG%"]],["CDMG%", "CR%", "ER%", "ATK%"],["Noblesse Oblige", "Heart of Depth"]]
+    },
+    "Diona" : {
+        "Support": [[["ER%", "HP%"],["HP%"],["HP%", "HB"]],["HP%", "ER%", "HP"],["Noblesse Oblige", "Maiden Beloved"]]
+    },
+    "Chongyun" : {
+        "Sub-DPS": [[["ATK%", "ER%", "EM"],["Cryo DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "EM"],["Noblesse Oblige"]]
+    },
+    "Kaeya" : {
+        "Cryo DPS": [[["ATK%"],["Cryo DMG%"],["CDMG%"]],["CDMG%", "ATK%", "ER%"],["Blizzard Strayer"]],
+        "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Pale Flame", "Bloodstained Chivalry"]],
+        "Sub-DPS": [[["ATK%", "ER%"],["Cryo DMG%"],["CDMG%", "CR%"]],["ER%", "CDMG%", "CR%", "ATK%"],["Noblesse Oblige"]]
+    },
+    "Rosaria" : {
+        "Cryo DPS": [[["ATK%"],["Cryo DMG%"],["CDMG%"]],["CDMG%", "ATK%", "ER%"],["Blizzard Strayer"]],
+        "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%"],["Pale Flame", "Bloodstained Chivalry"]],
+        "Sub-DPS": [[["ATK%", "ER%"],["Cryo DMG%"],["CDMG%", "CR%"]],["CR%", "EM", "ER%", "CDMG%"],["Noblesse Oblige"]]
+    },
+    "Qiqi" : {
+        "Support": [[["ATK%", "ER%"],["ATK%", "Cryo DMG%"],["ATK%", "HB"]],["ATK%", "ER%", "ATK"],["Tenacity of the", "Maiden Beloved"]]
+    },
+    "Ganyu" : {
+        "Cryo DPS": [[["ATK%"],["Cryo DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "EM"],["Blizzard Strayer", "Wanderer's Troupe", "Gladiator's Finale"]],
+        "Sub-DPS": [[["ATK%", "ER%"],["Cryo DMG%"],["CR%", "CDMG%"]],["ER%", "CDMG%", "CR%", "EM"],["Noblesse Oblige", "Blizzard Strayer"]]
+    },
+    "Eula" : {
+        "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ER%", "ATK%"],["Pale Flame"]]
+    },
+    "Sucrose" : {
+        "EM Support": [[["EM"],["EM"],["EM"]],["EM", "CR%", "CDMG%", "ATK%"],["Viridescent Venerer"]]
+    },
+    "Jean" : {
+        "Physical DPS": [[["ATK%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Pale Flame", "Bloodstained Chivalry"]],
+        "Sub-DPS": [[["ER%", "ATK%"],["Anemo DMG%"],["CR%", "CDMG%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Viridescent Venerer", "Noblesse Oblige"]],
+        "Support" : [[["ER%", "ATK%"],["ATK%"],["ATK%"]],["ATK%", "ER%"],["Viridescent Venerer", "Noblesse Oblige"]]
+    },
+    "Venti" : {
+        "EM DPS": [[["EM"],["EM"],["EM"]],["EM", "ER%", "ATK%"],["Viridescent Venerer"]],
+        "Sub-DPS": [[["ATK%"],["Anemo DMG%"],["CR%", "CDMG%"]],["CDMG%", "CR%", "EM", "ER%"],["Viridescent Venerer"]]
+    },
+    "Xiao" : {
+        "Anemo DPS": [[["ATK%"],["Anemo DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "ER%"],["Viridescent Venerer", "Gladiator's Finale"]]
+    },
+    "Kazuha" : {
+        "EM Support": [[["EM", "ER%"],["EM"],["EM"]],["EM", "ER%", "ATK%"],["Viridescent Venerer"]]
+    },
+    "Ningguang" : {
+        "Geo DPS": [[["ATK%"],["Geo DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "ER%"],["Gladiator's Finale", "Archaic Petra", "Retracing Bolide"]],
+        "Sub-DPS": [[["ATK%"],["Geo DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "ATK%", "ER%"],["Archaic Petra", "Noblesse Oblige"]]
+    },
+    "Noelle" : {
+        "Geo DPS": [[["DEF%"],["Geo DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "DEF%", "ATK%"],["Retracing Bolide"]],
+        "Support": [[["DEF%"],["DEF%"],["HB"]],["DEF%", "DEF", "ER%"],["Maiden Beloved"]]
+    },
+    "Zhongli" : {
+        "Physical DPS": [[["ATK%", "HP%"],["Physical DMG%"],["CDMG%", "CR%"]],["CDMG%", "CR%", "ATK%", "HP%"],["Pale Flame"]],
+        "Sub-DPS": [[["ATK%", "HP%"],["Geo DMG%"],["CR%", "CDMG%"]],["CR%", "CDMG%", "HP%", "ATK%"],["Tenacity of the"]],
+        "Support": [[["HP%"],["HP%"],["HP%"]],["HP%", "ER%", "HP"],["Tenacity of the"]]
+    },
+    "Albedo" : {
+        "Sub-DPS": [[["DEF%"],["Geo DMG%", "DEF%"],["CR%", "CDMG%", "DEF%"]],["CR%", "CDMG%", "DEF%", "ER%"],["Archaic Petra", "Noblesse Oblige"]]
+    }
+}

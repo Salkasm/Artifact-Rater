@@ -26,12 +26,14 @@ module.exports = {
 
 				case `ocr`:
 					message.channel.send('--------------------------------------')
-					message.channel.send('```\n<Documentation>\n\nCommand: '+ prefix +'ocr\n\nArguments: Uploaded image of substats\n\nExample: '+ prefix +'ocr\n\nExplanation: When uploading a image with substats, type "'+ prefix +'ocr" as a comment. An external program will analyse the image and the bot will calculate the rating.```')
+					message.channel.send('```\n<Documentation>\n\nCommand: '+ prefix +'ocr\n\nArguments: [ARTIFACT TYPE] [all] and an uploaded image of the substats.\n\nExample 1: '+ prefix +'ocr\nExplanation: Will analyse the substats only determine the amount of rolls per substat along with the quality of the rolls.\n\nExample 2: '+ prefix +'ocr flower\nExplanation: Will additionally analyse the main stat and the set type. Will output which character this artifact can be used on according to predefined builds.\n\nExample 3: '+ prefix +'ocr flower all\nExplanation: Will do the same, however it will ignore the set type (off-piece) and suggest builds according to main stat and substats only.\n\nBelow are 2 examples provided, the first one is for the simplified rating (requires at least 1 substat type and substat value), the second one for the more sophisticated rating (requires at least the mainstat + value, the substats + values and the set type (green name)).\nOnly supports 5 and 4 star substats!```')
+					message.channel.send({files: ["https://i.gyazo.com/3441fe067ad5241f90ec42efae4fa2db.png"]});
+					message.channel.send({files: ["https://i.gyazo.com/4c357a435f76a3a8b2a0e24ea2f64c49.png"]});
 					break;
 
 				case `rate`:
 					message.channel.send('--------------------------------------')
-					message.channel.send('```\n<Documentation>\n\nCommand: ;rate\n\nArguments: [STAT] [VALUE]\n\nExample: ;rate ATK% 11.1\n\nExplanation: Will give you a direct rating of 1 stat. Please leave out any "+" and "%" for the value part.```')
+					message.channel.send('```\n<Documentation>\n\nCommand: ;rate\n\nArguments: [STAT] [VALUE]\n\nExample: ;rate ATK% 11.1\n\nExplanation: Will give you a direct rating of 1 stat. Please leave out any "+" and "%" for the value part.\nOnly supports 5 star substats!```')
 					break;
 
 			}
