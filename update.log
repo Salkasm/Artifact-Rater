@@ -29,3 +29,7 @@ Added:
 
 Changes:
 - Removed all subjective builds, leaving only objective builds
+
+1.4
+Added:
+- profile command to show database entries
