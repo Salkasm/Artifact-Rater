@@ -19,3 +19,13 @@ Added:
 Changes:
 - Previous rate command is now called check
 - Previous ocr command is now called rate
+
+1.3
+Added:
+- Ayaka
+- Set piece "Shimenawa's Reminiscience"
+- Set piece "Emblem of Severed Fate"
+- Untested builds for unreleased characters (marked with a "+")
+
+Changes:
+- Removed all subjective builds, leaving only objective builds

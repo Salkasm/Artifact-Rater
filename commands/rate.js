@@ -332,7 +332,6 @@ module.exports = {
               }
               break;
               case 1:
-                console.log(mainstat)
               if(mainstat != "ATK%" && mainstat != "DEF%" && mainstat != "HP%" && mainstat != "Cryo DMG%" && mainstat != "EM" && mainstat != "Anemo DMG%" && mainstat != "Dendro DMG%" && mainstat != "Electro DMG%" && mainstat != "Hydro DMG%" && mainstat != "Pyro DMG%" && mainstat != "Geo DMG%"){
                 message.channel.send("Main stat was misread, missing or impossible!")
                 return;
