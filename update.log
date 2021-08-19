@@ -1,3 +1,10 @@
+Information:
+X.1.1 changes are for complete revamps
+1.X.1 changes are for added Features
+1.1.X changes are for minor build changes
+
+
+Log:
 1.0
 Initial public release of the bot. Features:
 - A command (rate) to rate individual substats by text. 
@@ -33,3 +40,12 @@ Changes:
 1.4
 Added:
 - profile command to show database entries
+
+1.4.1
+Added:
+- Made an entire README.md
+
+Changes:
+- Updated build sheets
+- Minor adjustment in the statement of "Well" and "Very Well"
+

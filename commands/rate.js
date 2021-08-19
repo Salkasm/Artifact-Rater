@@ -446,7 +446,7 @@ module.exports = {
                       }
                     }
                   }
-                  matchmessage += "(" + rating + "/" + (intersection2.length + difference.length + 5) + ") " + (options[each][every].strength == 1 && "**Well**" || options[each][every].strength > 1 && "**Very well**") + " with **" + each + "** (" + every + ") with the substats: **" + intersection2 + "**" + (difference && ("," + difference) || '') + ".\n"
+                  matchmessage += "(" + rating + "/" + (intersection2.length + difference.length + (swapto4[0]/swapto4[1] >= 0.5 ? 4 : 5)) + ") " + (options[each][every].strength == 1 ? "Acceptable" : (options[each][every].strength > 2 ? "Very well" : "Well")) + " on **" + each + "** (" + every + ") with the substats: **" + intersection2 + "**" + (difference && ("," + difference) || '') + ".\n"
                   rating = 0
                 }
               }
