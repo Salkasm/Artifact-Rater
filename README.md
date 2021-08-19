@@ -33,9 +33,7 @@ The **rating system** is something I have developed to rate artifacts according 
 
 The idea is to determine how valuable an artifact is according to their **set**, **main stat** and **substats**. The formula used is the following:
 
-$$
-Rating(DR) = \frac {DS + DR}{DS + r}
-$$
+<img src="https://render.githubusercontent.com/render/math?math=Rating(DR) = \frac {DS + DR}{DS + r}">
 
 **Rating** is obviously the rating of the artifact, given in a fraction. **r** is the rarity of the artifact, a **5**:star: therefore has the value **5** as it can upgrade stats **5** additional times starting from +0 levels. **DS** is the amount of desired substats, they are all treated equally. **DR** is the amount of rolls that went into any of the desired substats, this can at max be **5** for a **5**:star: artifact.
 
